@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load static %}
+
+		{% block content %}
+
+<div class="section section--content" id="content">
+	
+	<div class="messages">					  
+		<div class="messages__sidebar">
+			<div class="messages__header">
+				<form action="">
+					<input type="text" name="searchinbox" class="form__input form__input--sm" value="" placeholder="Search in messages" />
+				</form>
+			</div>
+			<div class="messages__all scrollbar-macosx" id="message_list">
+			{% for conversation_partner in conversation_partners %}
+				<div class="message__short new" id = "{{conversation_partner.id}}">
+					<div class="message__short-header">
+						<div class="messages__short-thumb"><img src="{% if customer.image %}{{conversation_partner.image.url}}{% endif %}" alt="" title=""/><span class="status status--online"></span></div>
+						<div class="messages__short-name">{{conversation_partner.company_name}}</div>
+						<div class="messages__short-date"></div>	
+					</div>
+					<div class="message__short-content">
+						<!-- <h4 class="messages__short-title">{{conversation_partner.company_name}}</h4> -->
+						<!-- <p class="messages__short-text">{{thread.get_last_message.content}}</p> -->
+					</div>
+				</div>
+			{% endfor %}
+				<!-- <div class="message__short new">
+					<div class="message__short-header">
+						<div class="messages__short-thumb"><img src="{{customer.image.url}}" alt="" title=""/><span class="status status--online"></span></div>
+						<div class="messages__short-name">Gracie Morris</div>
+						<div class="messages__short-date">today</div>	
+					</div>
+					<div class="message__short-content">
+						<h4 class="messages__short-title">Medical consultation</h4>
+						<p class="messages__short-text">If you are interested in knowing which treatment has the most evidence ...</p>
+					</div>
+				</div>
+				<div class="message__short selected">
+					<div class="message__short-header">
+						<div class="messages__short-thumb"><img src="{{customer.image.url}}" alt="" title=""/><span class="status status--online"></span></div>
+						<div class="messages__short-name">Gracie Morris</div>
+						<div class="messages__short-date">today</div>	
+					</div>
+					<div class="message__short-content">
+						<h4 class="messages__short-title">Medical consultation</h4>
+						<p class="messages__short-text">If you are interested in knowing which treatment has the most evidence ...</p>
+					</div>
+				</div> -->
+			</div>
+		</div>
+		<div class="messages__details" style="height: 70vh;" id="message_box">
+			<div class="messages__header messages__header--details" >
+					<div class="messages__header-thumb"><img src="{% if customer.image %}{{customer.image.url}}{% endif %}" alt="" title=""/><span class="status status--online"></span></div>
+				<div class="messages__header-user"></div>
+				<div class="messages__header-buttons">
+					<button class="button button--round"><img src="{% static 'images/icons/icons-20-gray/refresh.png' %}" alt="" title=""/></button>
+					<button class="button button--round"><img src="{% static 'images/icons/icons-20-gray/checked.png' %}" alt="" title=""/></button>
+					<button class="button button--round"><img src="{% static 'images/icons/icons-20-gray/delete.png' %}" alt="" title=""/></button>
+				</div>
+			</div>
+			<div class="messages__detailed scrollbar-macosx">
+
+			  <ul class="conversation">
+
+				   
+			  </ul>
+				
+				
+			</div>
+			<div class="messages__footer">
+		
+					<form action="" class="messages__footer-form" id="message_form">
+						<textarea type="textarea" class="messages__footer-textarea" id="message_input" name="" placeholder="Type your message..."></textarea>
+						<a href="" type="submit" id="submit_icon" class="messages__footer-submit"><img src="{% static 'images/send.png' %}" alt="" title="" id=""/></a>
+					</form>
+	
+			</div>
+		</div>
+	</div>
+
+
+
+
+</div>
+
+{% endblock %} 

@@ -1,0 +1,670 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta http-equiv="Content-Type"
+				content="text/html; charset=utf-8" />
+	<!-- <meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1" /> -->
+
+	<meta name="viewport" content="width=1050, initial-scale=1">
+	<meta name="author"
+				content="SmartTemplates" />
+	<meta name="description"
+				content="medikit admin dashboard" />
+	<meta name="keywords"
+				content="medical dashboard, HTML UI KIT, medikit" />
+	<title>{{customer.company_name}} - WYRE</title>
+	<link rel="stylesheet"
+				href=" {% static 'css/daterangepicker.css' %}" />
+	<link rel="stylesheet"
+				href=" {% static 'css/select2.css' %}" />
+	<link rel="stylesheet"
+				href=" {% static 'css/ion.rangeSlider.min.css' %}" />
+	<link rel="stylesheet"
+				href=" {% static 'css/dashboard.min.css' %}" />
+	<link rel="stylesheet"
+				href=" {% static 'css/extra-style.css' %}" />
+	{% if page == "Last Readings" %}
+	<link rel="stylesheet"
+				href=" {% static 'css/last_read.css' %}" />
+	{% endif %}
+	{% if page == "Score Card" %}
+	<link rel="stylesheet"
+				href=" {% static 'scss/scoreCards.css' %}" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	{% endif %}
+	{% if page == "Customers" %}
+	<link rel="stylesheet"
+				href=" {% static 'css/ini/allCustomers.css' %}" />
+	{% endif %}
+	{% if page == "View Profile" %}
+	<link rel="stylesheet"
+				href=" {% static 'css/ini/customerProfile.css' %}" />
+	{% endif %}
+	{% if page == "Add User" %}
+	<link rel="stylesheet"
+				href=" {% static 'css/ini/customerProfile.css' %}" />
+	{% endif %}
+	<!-- <link rel="stylesheet"
+				href=" {% static 'css/extra-style-copy.css' %}" /> -->
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900"
+				rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+	
+				
+</head>
+
+<body>
+	<!-- <div class="mobile">
+		<h1 class="mobile-text">Sorry I your can't this view website on moblie screen</h1>
+	</div> -->
+	<div class="dashboard-wrap">
+		<header class="sidebar-header">
+			<img src=" {% static 'images/logo.svg' %}" alt="logo" class="sidebar-header__logo">
+		</header>
+
+		<!-- Section sidebar -->
+		<div class="section section--sidebar" id="sidebar">
+			<nav class="sidebar-menu">
+					<div id="xxx"></div>
+				<ul>
+					<li class="dashboard">
+						<a href="/"><b>Dashboard</b></a>
+					</li>
+					<li>
+							<a style="background-image: url('https://img.icons8.com/office/25/000000/electricity.png')" href="/score_card"><b>Score card</b></a>
+					</li>
+					<li class="components has-submenu">
+						<a href="#"><b>Parameters<span class="submenu-arrow"></span></b></a>
+						<ul class="sidebar-menu__submenu">
+							<li>
+								<a href="/last_read">Last Readings</a>
+							</li>
+							<li>
+								<a href="/readings">Charts & Logs</a>
+							</li>
+						</ul>
+					</li>
+		
+					<li class="patients has-submenu">
+						<a href="#"><b>Customers<span class="submenu-arrow"></span></b></a>
+						<ul class="sidebar-menu__submenu">
+							<!-- <li>
+								<a href="dashboard__patient.html">Bills and Uploads</a>
+							</li> -->
+							{% if customer.is_main_admin %}
+							<li>
+								<a href="../add_user/">Add new customers</a>
+							</li>
+							<li>
+								<a href="/all_customers">View all customers</a>
+							</li>
+							<li>
+								<a href="/upload_cdd">Add degree days</a>
+							</li>
+							{% endif %}
+							
+							<!-- <li>
+								<a href="../view_customer/{{customer.id}}">Customers profile</a>
+							</li> -->
+							<li>
+								<a href="../view_profile/">View profile</a>
+							</li>
+							
+						</ul>
+					</li>
+					<li class="inbox">
+						<a href="/messaging"><b>Messages<span class="submenu-bubble">{{customer.count_unread_messages}}</span></b></a>
+					</li>
+					<!-- <li class="settings">
+						<a href="#"><b>Access Control</b></a>
+					</li> -->
+				</ul>
+			</nav>
+		</div>
+
+		<!-- Section -->
+		<div class="section section--content"
+				 id="content">
+			<header class="content-header">
+				<div class="sidebar-resize"></div>
+				<div class="content-header__notifications content-header__dropdown">  
+						<div class="content-header__notifications-icon content-header__icon content-header__dropdown-activate" data-dropdown="notificationsdropdown">
+							<img src="{% static 'images/icons/icons-24-gray/notifications.png' %}" alt="" title="">
+							{% if customer.count_unread_messages  %}
+							<span class="content-header__icon-bubble">{{customer.count_unread_messages}}</span>
+							{% endif  %}
+						</div>  
+						<!-- <nav class="dropdown-menu dropdown-menu--header dropdown-menu--notifications-menu" id="notificationsdropdown"> 			
+						<h3 class="dropdown-menu__subtitle">You have <strong>6</strong> notifications</h3>
+						<ul>    
+							<li class="d-flex justify-sb"><span class="important">NOTIFICATION</span>Eco friendly Gens available <b class="task-time">today</b></li>
+							<li class="d-flex justify-sb"><span class="important">IMPORTANT</span>Subscription ending soon <b class="task-time">today</b></li>
+							<li class="d-flex justify-sb"><span class="important">MESSAGE</span>If you are interested   ... <b class="task-time">today</b></li>
+							<li class="d-flex justify-sb"><span class="important">MESSAGE</span>If you are interested   ... <b class="task-time">today</b></li>
+							<li class="d-flex justify-sb"><span class="important">MESSAGE</span>If you are interested   ... <b class="task-time">today</b></li>
+							
+							
+							<li class="view-all"><a href="../messaging" class="button button--general button--blue-border">View all</a></li>
+						</ul>
+						</nav> -->
+				</div>
+				<div class="mobile-menu">
+					<div class="st-burger-icon st-burger-icon--medium">
+						<span></span>
+					</div>
+				</div>
+
+				<div class="content-header__user content-header__dropdown">
+					<div class="content-header__user-avatar content-header__dropdown-activate"
+							 data-dropdown="userdropdown">
+						<div class="content-header__user-thumb">
+							
+							<img src="{% if customer.image %}{{customer.image.url}}{% endif %}"
+							
+									 alt=""
+									 title="" />
+						</div>
+						<span class="content-header__user-name">{{customer.company_name |truncatechars:25}}</span>
+					</div>
+					<nav class="dropdown-menu dropdown-menu--header dropdown-menu--user-menu "
+							 id="userdropdown">
+						<h3 class="dropdown-menu__subtitle">User menu</h3>
+						<ul>
+							<li><a href="/view_profile">View profile</a></li>
+							<!-- <li><a href="/">Edit</a></li> -->
+							<li class="logout">
+								<a href="../auth/logout"
+									 class="button button--general button--red-border">Logout</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<div class="mobile-submenu"></div>
+
+				<nav class="content-header__menu">
+
+					<ul>
+						{% if page == "Dashboard" %}
+						
+						<li class="reports prescription">
+							<form>
+								<div class="multiselect">
+								  <div class="selectBox" onclick="showCheckboxes()">
+									<select class="show-more show-more--select show-more--select-gray has-dropdown">
+									  <option>Click To Filter Selected Devices</option>
+									</select>
+									<div class="overSelect"></div>
+								  </div>
+								  <div id="checkboxes">
+									{% for device in devices %}
+										<label for="{{device.id}}">
+										<input checked = "true" class="device_checkbox" type="checkbox" id="{{device.id}}" />{{device.name}}-{{device.branch.name}}</label>
+									{% endfor %}
+									<hr>
+									<a id="load_readings" onclick="showCheckboxes()" href="#" class="button button--blue-bg button--general button--inline">Fetch</a>
+									<a id="close_device_btn" onclick="showCheckboxes()" href="#" class="button button--red-bg button--general button--inline">Close</a>
+								  </div>
+								</div>
+							  </form>
+						</li>
+
+						{% endif %}
+						{% if page != "Dashboard" %}
+						<li class="reports prescription modal-toggle">
+							<select class="show-more show-more--select show-more--select-gray has-dropdown" id="device">
+								{% for device in devices %}
+								{{devices}}
+									<option value="{{device.id}}">{{device.name |truncatechars:25}}-{{device.branch.name |truncatechars:25}}</option>
+								{% endfor %}
+							</select>
+							</li>
+						{% endif %}
+
+
+
+						{% if page == "Dashboard" %}
+						<li class="reports modal-toggle">		
+							<input type="text" name="dates" class="time_period form__input button no_outline" value="{{def_start_date}} - {{def_end_date}}" id = "time_period">
+							<div id = "default_range" hidden>{{def_start_date}} - {{def_end_date}}</div>
+						</li>
+						{% endif%}
+						{% if page == "Readings" %}
+						<li class="reports modal-toggle">
+							<input class="single_date button form__input no_outline" type="text" name="date" value="08/11/2019" id="single_date"/>
+						</li>
+
+						<li class="reports prescription modal-toggle">
+							<select class="show-more show-more--select show-more--select-gray has-dropdown" id="parameter">
+								{% for parameter in parameters %}
+									<option value="{{parameter}}">{{parameter}}</option>
+								{% endfor %}
+							</select>
+							
+							</li>
+						{% endif%}
+						
+
+						{% if page == "Energy Readings" %}
+						<li class="reports modal-toggle">		
+							<input type="text" name="dates" class="time_period form__input button no_outline" value="{{def_start_date}} - {{def_end_date}}" id = "time_period">
+							<div id = "default_range" hidden>{{def_start_date}} - {{def_end_date}}</div>
+						</li>
+
+						<li class="reports prescription modal-toggle">
+							<select style="margin-left: 31px;" class="show-more show-more--select show-more--select-gray has-dropdown" id="frequency">
+								{% for frequency in frequencies %}
+									<option value="{{frequency}}">{{frequency}}</option>
+								{% endfor %}
+							</select>
+							
+							</li>
+						{% endif%}
+						
+					</ul>
+				</nav>
+
+			</header>
+			<div class="content-subheader">
+				<div class="content-subheader__titles">
+					<!-- <h2 class="content-subheader__title">Home</h2> -->
+					<nav class="content-subheader__breadcrumb-menu">
+						<ul>
+							<li><a href="/">Home</a></li>
+						</ul>
+					</nav>
+					{% if page != "Dashboard" %}
+					<nav class="content-subheader__breadcrumb-menu">
+						<ul>
+							<li><a href="#">Parameters</a></li>
+						</ul>
+					</nav>
+					{% endif %}
+					<nav class="content-subheader__breadcrumb-menu">
+						<ul>
+							<li><a href="#">{{page}}</a></li>
+						</ul>
+					</nav>
+				</div>
+
+			</div>
+			
+			{% block content %}
+
+			
+
+			{% endblock %}
+			<!-- End of Grid -->
+		</div>
+		
+	</div>
+	<!-- Wrap end -->
+
+
+
+	
+
+	<div class="section section-panel"
+			 id="panel">
+		<div class="panel-resize"></div>
+		<div class="section-panel__content scrollbar-macosx">
+			<div class="grid">
+				<div class="grid__row">
+					<div class="grid__col grid__col--padding">
+						<div class="grid__row">
+							<div class="grid__col grid__col--margin">
+								<h3 class="grid__col-title">Admin</h3>
+							</div>
+						</div>
+						<div class="grid__row align-c">
+							<div class="grid__col grid__col--12 grid__col--margin">
+								<label class="form__label pb0">ENABLED OPTION</label>
+							</div>
+							<div class="grid__col grid__col--12 grid__col--margin">
+								<div class="form__switcher">
+									<label class="switch">
+										<input class="switch__input"
+													 type="checkbox"
+													 data-role="none"
+													 checked />
+										<span class="switch__label"
+													data-on="On"
+													data-off="Off"></span>
+										<span class="switch__handle"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="grid__row align-c">
+							<div class="grid__col grid__col--12 grid__col--margin">
+								<label class="form__label pb0">DISABLED OPTION</label>
+							</div>
+							<div class="grid__col grid__col--12 grid__col--margin">
+								<div class="form__switcher">
+									<label class="switch">
+										<input class="switch__input"
+													 type="checkbox"
+													 data-role="none" />
+										<span class="switch__label"
+													data-on="On"
+													data-off="Off"></span>
+										<span class="switch__handle"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="grid__row align-c">
+							<div class="grid__col grid__col--12 grid__col--margin">
+								<label class="form__label pb0">ENABLED OPTION</label>
+							</div>
+							<div class="grid__col grid__col--12 grid__col--margin">
+								<div class="form__switcher">
+									<label class="switch">
+										<input class="switch__input"
+													 type="checkbox"
+													 data-role="none"
+													 checked />
+										<span class="switch__label"
+													data-on="On"
+													data-off="Off"></span>
+										<span class="switch__handle"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+						<div class="grid__row align-c">
+							<div class="grid__col grid__col--12 grid__col--margin">
+								<label class="form__label pb0">DISABLED OPTION</label>
+							</div>
+							<div class="grid__col grid__col--12 grid__col--margin">
+								<div class="form__switcher">
+									<label class="switch">
+										<input class="switch__input"
+													 type="checkbox"
+													 data-role="none" />
+										<span class="switch__label"
+													data-on="On"
+													data-off="Off"></span>
+										<span class="switch__handle"></span>
+									</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End of Grid -->
+		</div>
+	</div>
+	<!-- End of right panel -->
+
+	<!-- Modal - Appointment -->
+	<div class="modal modal--appointment">
+		<div class="modal__overlay modal__overlay--toggle"></div>
+		<div class="modal__wrapper modal-transition">
+			<div class="modal__body">
+				<div class="modal__header">
+					<h2 class="modal__header-title">Create User</h2>
+					<div class="modal__close modal__overlay--toggle"><span></span></div>
+				</div>
+				<div class="modal__content">
+					<div class="grid">
+						<div class="grid__row grid__row--margin">
+							<div class="grid__col grid__col--margin">
+								<h3 class="grid__col-title">Company Information</h3>
+							</div>
+						</div>
+						<div class="grid__row grid__row--margin">
+							<div class="grid__col grid__col--margin">
+								<label class="form__label">COMPANY NAME</label>
+								<input name="company"
+											 id="company"
+											 class="form__input required"
+											 type="text" />
+							</div>
+							<div class="grid__col grid__col--margin">
+								<label class="form__label">LOCATIONS</label>
+								<select class="custom-select w100"
+												name="appname">
+									<option value="Patient Name">Ikeja ID:13245</option>
+									<option value="Patient Name">Yaba ID:72245</option>
+									<option value="Patient Name">Victoria Island ID:19455</option>
+									<option value="Patient Name">Surulere ID:2845</option>
+									<option value="Patient Name">Maryland ID:13245</option>
+								</select>
+							</div>
+						</div>
+						<div class="grid__row  grid__row--margin">
+							<div class="grid__col grid__col--margin">
+								<label class="form__label">ADDRESS</label>
+								<input name="adress"
+											 id="adress"
+											 class="form__input required"
+											 type="text" />
+							</div>
+						</div>
+						<div class="grid__row grid__row--margin">
+							<div class="grid__col grid__col--margin">
+								<h3 class="grid__col-title">User Information</h3>
+							</div>
+						</div>
+						<div class="grid__row grid__row--margin">
+							<div class="grid__col grid__col--13 grid__col--margin">
+								<div class="grid__col grid__col--margin">
+									<label class="form__label">USERNAME</label>
+									<input name="fname"
+												 id="fname"
+												 class="form__input required"
+												 type="text" />
+								</div>
+							</div>
+							<div class="grid__col grid__col--13 grid__col--margin">
+								<div class="grid__col grid__col--margin">
+									<label class="form__label">PASSWORD</label>
+									<input name="password"
+												 id="password"
+												 class="form__input required"
+												 type="password" />
+								</div>
+							</div>
+							<div class="grid__col grid__col--13 grid__col--margin">
+								<div class="grid__col grid__col--margin">
+									<label class="form__label">CONFIRM PASSWORD</label>
+									<input name="password"
+												 id="password_2"
+												 class="form__input required"
+												 type="password" />
+								</div>
+							</div>
+						</div>
+						<div class="grid__row grid__row--margin">
+							<div class="grid__col grid__col--margin">
+								<input type="submit"
+											 name="submit"
+											 class="button button--submit button--blue-bg"
+											 id="submit"
+											 value="CREATE" />
+							</div>
+						</div>
+					</div>
+					<!-- End of Grid -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal - prescription -->
+	
+
+	<!-- Modal - reports -->
+	<div class="modal modal--reports">
+		<div class="modal__overlay modal__overlay--toggle"></div>
+		<div class="modal__wrapper modal-transition">
+			<div class="modal__body">
+				<div class="modal__header">
+					<h2 class="modal__header-title">Generate report</h2>
+					<div class="modal__close modal__overlay--toggle"><span></span></div>
+				</div>
+				<div class="modal__content">
+					<div class="grid">
+						<div class="grid__row grid__row--margin">
+							<div class="grid__col grid__col--margin">
+								<h3 class="grid__col-title">Usage Information</h3>
+							</div>
+						</div>
+						
+						<div class="grid__row  grid__row--margin">
+							<div class="grid__col grid__col--margin">
+								<h3 class="grid__col-title">Summary Timeline</h3>
+							</div>
+						</div>
+						<div class="grid__row grid__row--margin">
+							<!-- <div class="grid__col grid__col--12 grid__col--margin">
+								<label class="form__label">REPORT TYPE</label>
+								<select class="custom-select"
+												name="applocation">
+									<option value="Diseases">Diseases report</option>
+									<option value="Activity">Activity report</option>
+								</select>
+							</div> -->
+							<div class="grid__col grid__col--12 grid__col--margin">
+								<label class="form__label">REPORT PERIOD</label>
+								<input type="text"
+											 name="dates"
+											 class="form__input"
+											 value="" />
+							</div>
+						</div>
+						<!-- <div class="grid__row grid__row--margin">
+							<div class="grid__col grid__col--margin">
+								<h3 class="grid__col-title">Doctor Information</h3>
+							</div>
+						</div> -->
+						<!-- <div class="grid__row grid__row--margin">
+							<div class="grid__col grid__col--13 grid__col--margin">
+								<label class="form__label">Generated by Doctor</label>
+								<select class="custom-select"
+												name="apptype">
+									<option value="Patient Name">Dr. Alexander Davies</option>
+									<option value="Patient Name">Dr. William Evans</option>
+									<option value="Patient Name">Dr. Daniel Smith</option>
+									<option value="Patient Name">Dr. Jayden Taylor</option>
+									<option value="Patient Name">Dr. Oliver Thomas</option>
+									<option value="Patient Name">Dr. Carter Roberts</option>
+									<option value="Patient Name">Dr. Sebastian Walker</option>
+									<option value="Patient Name">Dr. Joseph Johnson</option>
+									<option value="Patient Name">Dr. David Thompson</option>
+									<option value="Patient Name">Dr. Gabriel Wood</option>
+									<option value="Patient Name">Dr. Julian Robinson</option>
+								</select>
+							</div>
+							<div class="grid__col grid__col--23 grid__col--margin">
+								<label class="form__label">NOTES</label>
+								<input name="notes"
+											 id="notes"
+											 class="form__input"
+											 type="text" />
+							</div> -->
+						</div>
+						<div class="grid__row grid__row--margin">
+							<div class="grid__col grid__col--margin">
+								<input type="submit"
+											 name="submit"
+											 class="button button--submit button--blue-bg"
+											 id="submit"
+											 value="GENERATE REPORT" />
+							</div>
+						</div>
+					</div>
+					<!-- End of Grid -->
+				</div>
+			</div>
+		</div>
+		{% csrf_token %}
+		<span id="customer_id" hidden>{{customer.id}}</span>
+		</div>
+	
+	<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+	<!-- Sweet-Alert  -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	<script src= "{% static 'sweetalert/sweetalert.min.js'  %}"></script>
+	<script src="{% static 'sweetalert/jquery.sweet-alert.custom.js' %}"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="{% static 'js/moment.min.js' %}"></script>
+	<script src="{% static 'js/select2.min.js' %}"></script>
+	<script src="{% static 'js/daterangepicker.min.js' %}"></script>
+	<script src="{% static 'js/ion.rangeSlider.min.js' %}"></script>
+	<script src="{% static 'js/jquery.dashboard-custom.js' %}"></script>
+	<script src="{% static 'js/tippy1.js' %}"></script>
+	<script src="{% static 'js/tippy5.js' %}"></script>
+	{% if page == "Dashboard" %}
+		<script src="{% static 'js/dashboard.js' %}"></script>
+	{% endif %}
+
+	{% if page == "Last Readings" %}
+		<script src="{% static 'js/last_read.js' %}"></script>
+	{% endif %}
+
+	{% if page == "Messaging" %}
+		<script src="{% static 'js/messaging.js' %}"></script>
+	{% endif %}
+
+	{% if page == "Score Card" %}
+		<script src="{% static 'js/by_ini/baseline-donut.js' %}"></script>
+		<script src="{% static 'js/by_ini/capacity-donut1.js' %}"></script>
+		<script src="{% static 'js/by_ini/capacity-donut2.js' %}"></script>
+		<script src="{% static 'js/by_ini/felf-donut.js' %}"></script>
+		<script src="{% static 'js/by_ini/carbon-donut.js' %}"></script>
+		<script src="{% static 'js/by_ini/random-donut.js' %}"></script>
+		<script src="{% static 'js/by_ini/tooltip.js' %}"></script>
+	{% endif %}
+	
+	{% if page == "Customers" %}
+		<script src="{% static 'js/by_ini/allCustomers.js' %}"></script>
+	{% endif %}
+	
+	{% if page == "View Profile" %}
+		<script src="{% static 'js/profile_view.js' %}"></script>
+	{% endif %}
+	
+	{% if page == "Add Degree Days" %}
+		<script src="{% static 'js/add_cdd.js' %}"></script>
+	{% endif %}
+	
+	{% if page == "Add User" %}
+		<script src="{% static 'js/add_user.js' %}"></script>
+	{% endif %}
+	
+	{% if page == "Edit Profile" %}
+		<script src="{% static 'js/edit_customer.js' %}"></script>
+	{% endif %}
+	
+	{% if page == "Readings" %}
+		<script src="{% static 'js/readings.js' %}"></script>
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.# print.min.js"></script>	
+	{% endif %}
+
+	{% if page == "Energy Readings" %}
+		<script src="{% static 'js/energy_readings.js' %}"></script>
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>	
+		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.# print.min.js"></script>	
+	{% endif %}
+
+</body>
+
+</html>

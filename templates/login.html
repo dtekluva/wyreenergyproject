@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="author" content="SmartTemplates" />
+<meta name="description" content="Medical landing page template for saas companies" />
+<meta name="keywords" content="Medical landing page template, saas landing page template, saas website template, one page saas template" />
+<title>PPL-WYRE LOGIN</title>
+<link rel="stylesheet" href="{% static 'css/swiper.css'%}">
+<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.min.css' %}">
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+</head>
+<body>
+	
+
+	<section class="modal modal--signuplogin modal--visible">
+		<div class="modal__overlay modal__overlay--"></div>
+		<div class="modal__wrapper modal-transition login">
+		  
+		<div class="modal__body">
+		        
+			<div class="modal__content modal__content--login modal__content--visible">
+				<div class="modal__info">
+					<h2 class="modal__title">First time here?</h2>
+					<div class="modal__descr"> <span>Take total control and reduce your energy usage today</span> </div>
+					<ul class="modal__list">
+					<li>Real time usage statistics</li>
+					<li>Efficient support </li>
+					
+					<li>Contact +2348036666666 to begin</li>
+					</ul>
+					<div class="modal__switch "><img class = "image__logo" src=" {% static 'images/logo.svg' %}" alt="logo" class="sidebar-header__logo"></div>
+				</div>
+				<div class="modal__form form">
+					<h2 class="form__title">Login</h2>
+						<form class="form__container" id="LoginForm" method="post" action="auth/login">
+						
+						<div class="form__row">
+								<label class="form__label" for="namec">Username</label>
+							<input name="username" id="namec" class="form__input" type="text">
+							<span class="form__row-border"></span>
+						</div>
+						<div class="form__row">
+								<label class="form__label">Password</label>
+							<input name="password" class="form__input" type="password">	
+							<span class="form__row-border"></span>									
+						</div>
+						{% csrf_token %}
+
+						<!-- ################################### -->
+						<!-- LOGIN IS BEING HANDLED BY SCRIPT.JS -->
+						<!-- ################################### -->
+
+						<div class="modal__checkbox"><input id="remember" name="remember" value="remember" checked="" type="checkbox"><label for="remember">Keep me Signed in</label></div>
+						<div class="modal__switch modal__switch--forgot" data-popup="forgot">Forgot Password?</div>
+						<div hidden class="modal__switch--forgot" id = "login_error" data-popup="forgot">Invalid username or password</div>
+						<input type="submit" name="submit" class="form__submit btn btn--blue-bg" id="submitl" value="LOGIN">
+						</form>
+				</div>
+			</div>  <!-- End Modal login -->
+			
+			<div class="modal__content modal__content--forgot">
+				<div class="modal__form form">
+					<h2 class="form__title">Forgot Password</h2>
+						<form class="form__container" id="ForgotForm" method="post" action="index.html">
+						<div class="form__row">
+							<label class="form__label">Email</label>
+							<input name="emailf" class="form__input" type="text">	
+							<span class="form__row-border"></span>									
+						</div>
+						<input type="submit" name="submit" class="form__submit btn btn--blue-bg" id="submitf" value="RESET PASSWORD">
+						</form>
+				</div>
+				<div class="modal__info">
+					<h2 class="modal__title">We got you covered</h2>
+					<div class="modal__descr">A new password will be sent by email. Remembered your password?</div>
+					<button class="modal__switch modal__switch--signup" data-popup="login">Login</button>
+				</div>
+			</div>  <!-- End Modal login -->
+			
+			
+			<div class="modal__content modal__content--signup">
+				<div class="modal__form form">
+					<h2 class="form__title">Signup</h2>
+						<form class="form__container" id="SignupForm" method="post" action="index.html">
+						<div class="form__row">
+							<label class="form__label" for="names">Username</label>
+							<input name="namec" id="names" class="form__input" type="text">
+							<span class="form__row-border"></span>
+						</div>
+						<div class="form__row">
+							<label class="form__label">Email</label>
+							<input name="emails" class="form__input" type="text">	
+							<span class="form__row-border"></span>									
+						</div>
+						<div class="form__row">
+							<label class="form__label" for="pass">Password</label>
+							<input name="pass" id="pass" class="form__input" type="password">
+							<span class="form__row-border"></span>
+						</div>
+						<input type="submit" name="submit" class="form__submit btn btn--blue-bg" id="submit" value="SIGNUP">
+						</form>
+				</div>
+				<div class="modal__info">
+					<h2 class="modal__title">Already have an account?</h2>
+					<div class="modal__descr">Login now and starting using our <span>amazing</span> products</div>
+					<ul class="modal__list">
+					<li>premium access to all products</li>
+					<li>free testing tools</li>
+					<li>unlimited user accounts</li>
+					</ul>
+					<button class="modal__switch modal__switch--login" data-popup="login">Login</button>
+				</div>
+			</div>  <!-- End Modal signup -->
+			
+		</div>
+		  
+		</div>
+	  </section>   <!-- Modal for Login and Signup -->
+	
+
+	  <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+	  <script src="{% static 'js/swiper.min.js' %}"></script>
+	  <script src="{% static 'js/menu.js' %}"></script>
+	  <script src="{% static 'js/scrolla.jquery.min.js' %}"></script>
+	  <script src="{% static 'js/jquery.custom.js' %}"></script>
+	  <script src="{% static 'js/swiper.custom.js' %}"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	  <script src= "{% static 'sweetalert/sweetalert.min.js'  %}"></script>
+	  <script src="{% static 'sweetalert/jquery.sweet-alert.custom.js' %}"></script>
+	  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	  <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+</html>
+

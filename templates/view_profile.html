@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% load static %}
+
+		{% block content %}
+
+		
+		<div class="grid grid--margin bg-white">	
+			<div class="grid__row">
+				<div class="grid__col grid__col--padding">
+					<h3 class="grid__col-title">Customer Profile</h3>
+			
+				</div>		
+			</div>	
+			<form>
+			<div class="grid__row grid__row--margin">
+				
+				<div class="grid__col grid__col--13 grid__col--margin">
+					<div style="background-image: url({% if customer.image %}{{customer.image.url}}{% endif %});" class="form-upload" id="dropzone">
+						<!-- Dropzone not clickable here because javascript has been turned off for it (bottom of page) -->
+						<div class="form-upload__message dz-message needsclick">CLICK TO CHANGE</div>
+						
+						<!-- Image Displayed Here -->
+						<img class="form-upload__message dz-message needsclick">
+					</div>
+				</div>
+				<input hidden id="image" type="file" src="" alt="">
+				
+				<div class="grid__col grid__col--13 grid__col--margin">
+					<div class="grid__row">  
+						<div class="grid__col grid__col--margin">
+							<label class="form__label">COMPANY NAME *</label>
+							<input value="{{customer.company_name}}" name="fname" id="fname" class="form__input required" type="text" />	
+						</div>
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+								<label class="form__label">COMPANY ADDRESS *</label>
+								<input  value="{{customer.address}}"  id="address" class=" form__input required" type="text" />
+						</div>
+					</div>
+				<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+								<label class="form__label">USERNAME (FOR LOGIN) *</label>
+								<input  value="{{user.username}}"  id="username" class=" form__input required" type="username" />
+						</div>
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+							<label class="form__label">PHONE *</label>
+							<input id="phone" value="{{customer.phone}}" class="form__input required" type="tel" />	
+						</div>
+					</div>
+					
+					
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<input type="button" class="button button--submit button--blue-bg" id="new-branch-button"  value="UPDATE DETAILS" style="margin:auto;" />					
+						</div>
+					</div>
+					
+				</div>
+				
+				
+				      
+			</div>
+			
+			
+			</form>
+			
+
+		</div> <!-- End of Grid -->
+
+		<div class="grid grid--margin bg-white branch-sectionp-container">
+				
+			<div id="branches-wrapper">
+					<div class="branch-object" id="first-branch">
+						<hr style="border: none; border-top: 1px solid #e5e7ee; margin: 0px 0px 15px;">
+						
+						
+							<div class="grid__row grid__row--margin">
+								<div class="grid__col grid__col--37 grid__col--margin">
+									<label class="form__label">ENTER OLD PASSWORD</label>
+									<input id ="old_password" placeholder="********" value=""  class="form__input" type="password" />
+								</div>
+								<div class="grid__col grid__col--37 grid__col--margin">
+									<label class="form__label">ENTER NEW PASSWORD</label>
+									<input id ="new_password" placeholder="********" value=""  class="form__input" type="password" />
+								</div>
+								<div class="grid__col grid__col--37 grid__col--margin">
+									<label class="form__label">RE-ENTER PASSWORD</label>
+									<input id ="retype_password" placeholder="********" value=""  class="form__input" type="password" />
+								</div>
+								<div class="grid__col grid__col--37 grid__col--margin">
+									<label class="form__label">&nbsp;</label>
+									<input type="button" class="button button--submit button--blue-bg" id="password_button"  value="UPDATE PASSWORD" style="margin:auto;" />					
+								</div>
+							</div>
+						
+					</div>
+				</div>
+			
+		</div> <!-- End of Grid -->
+		
+		<div class="grid grid--margin bg-white branch-sectionp-container">
+			
+			<div class="grid__row">
+				<div class="grid__col grid__col--padding">
+					<h3 style="margin: 0px;" class="grid__col-title">Branches</h3>
+					<!-- <p>Enter details about all your branches here</p> -->
+				</div>		
+			</div>
+			
+		</div> <!-- End of Grid -->
+
+			{% for branch in branches %}
+					
+			<div class="grid grid--margin bg-white branch-sectionp-container">
+				
+				<div id="branches-wrapper">
+						<div class="branch-object" id="first-branch">
+							<hr style="border: none; border-top: 1px solid #e5e7ee; margin: 0px 0px 15px;">
+							<div class="grid__row grid__row--margin">
+								<div class="grid__col grid__col--37 grid__col--margin">
+									<label class="form__label">BRANCH NAME</label>
+									<input readonly value="{{branch.name}}"  class="readonly form__input" type="text" />
+								</div>
+								<div class="grid__col grid__col--37 grid__col--margin">
+									<label class="form__label">BRANCH ADDRESS</label>
+									<input readonly value="{{branch.address}}"  class="readonly form__input" type="text" />
+								</div>
+							</div>
+							<div class="grid__row grid__row--margin">
+								<div class="grid__col grid__col--37 grid__col--margin">
+									<label class="form__label">GENERATOR 1 SIZE (KVA)</label>
+									<input readonly value="{{branch.gen1_val}}"  class="readonly form__input" type="text" />
+								</div>
+								<div class="grid__col grid__col--37 grid__col--margin">
+									<label class="form__label">GENERATOR 2 SIZE (KVA)</label>
+									<input readonly value="{{branch.gen2_val}}"  class="readonly form__input" type="text" />
+								</div>
+							</div>
+							<div class="grid__row" >
+								<div class="grid__col grid__col--padding" style="padding: 0 25px;">
+									<p class="form__label branch-number" style="padding-bottom: 15px; font-weight: 500; color: #3a3e48;">DEVICES <span class="branch-number"></span> </p>
+								</div>		
+							</div>
+							{% for device in branch.get_devices %}
+								<div class="grid__row grid__row--margin">
+									<div class="grid__col grid__col--37 grid__col--margin">
+										<label class="form__label">DEVICE NAME</label>
+										<input readonly value="{{device.name}}"  class="readonly form__input" type="text" />
+									</div>
+									<div class="grid__col grid__col--37 grid__col--margin">
+										<label class="form__label">DEVICE ID</label>
+										<input readonly value="{{device.device_id}}"  class="readonly form__input" type="text" />
+									</div>
+									<div class="grid__col grid__col--37 grid__col--margin">
+										<label class="form__label">LOCATION</label>
+										<input readonly value="{{device.location.name}}"  class="readonly form__input" type="text" />
+									</div>
+									<div class="grid__col grid__col--37 grid__col--margin">
+										<label class="form__label">DATE ADDED</label>
+										<input readonly value="{{device.added}}"  class="readonly form__input" type="text" />
+									</div>
+								</div>
+							{% endfor %}
+						</div>
+					</div>
+					<!-- <div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<input type="button" class="button button--submit button--blue-bg" id="new-branch-button" onclick="location.href='dashboard__patients-add.html';" value="UPDATE BRANCH" style="margin:auto;" />					
+						</div>
+					</div> -->
+				
+			</div> <!-- End of Grid -->
+			
+			{% endfor %}
+
+		{% endblock %}

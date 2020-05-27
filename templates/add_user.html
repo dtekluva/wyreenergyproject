@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% load static %}
+
+		{% block content %}
+
+		
+		<div class="grid grid--margin bg-white">	
+			<div class="grid__row">
+				<div class="grid__col grid__col--padding">
+					<h3 class="grid__col-title">Customer Profile (DEFAULT PASSWORD - 12345678)</h3>
+			
+				</div>		
+			</div>	
+			<form>
+			<div class="grid__row grid__row--margin">
+				
+				<div class="grid__col grid__col--13 grid__col--margin">
+					<div class="form-upload" id="dropzone">
+						<!-- Dropzone not clickable here because javascript has been turned off for it (bottom of page) -->
+						<div class="form-upload__message dz-message needsclick">CLICK TO CHANGE</div>
+						
+						<!-- Image Displayed Here -->
+						<img class="form-upload__message dz-message needsclick">
+					</div>
+				</div>
+				<input hidden id="image" type="file" src="" alt="">
+				
+				<div class="grid__col grid__col--13 grid__col--margin">
+					<div class="grid__row">  
+						<div class="grid__col grid__col--margin">
+							<label class="form__label">COMPANY NAME *</label>
+							<input value="" name="fname" id="fname" class="form__input required" type="text" />	
+						</div>
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+								<label class="form__label">COMPANY ADDRESS *</label>
+								<input  value=""  id="address" class=" form__input required" type="text" />
+						</div>
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+								<label class="form__label">USERNAME (FOR LOGIN) *</label>
+								<input  value=""  id="username" class=" form__input required" type="username" />
+						</div>
+					</div>
+					<div class="grid__row">
+						<div class="grid__col grid__col--margin">
+							<label class="form__label">PHONE *</label>
+							<input id="phone" value="" class="form__input required" type="tel" />	
+						</div>
+					</div>
+					
+					
+					<div class="grid__row grid__row--margin">
+						<div class="grid__col grid__col--margin">
+							<input type="button" class="button button--submit button--blue-bg" id="new-branch-button"  value="CREATE CUSTOMER" style="margin:auto;" />					
+						</div>
+					</div>
+					
+				</div>
+				
+				
+				      
+			</div>
+			
+			
+			</form>
+			
+
+		</div> <!-- End of Grid -->
+
+
+		{% endblock %}

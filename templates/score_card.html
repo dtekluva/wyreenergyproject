@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% load static %}
+
+		{% block content %}
+
+	
+		<!-- Section -->
+		<div  class="cards-container">
+			<div id="baseline-card" class="card baseline-card">
+			  <header class="card-header">
+				<h2 class="card-title">Baseline Energy</h3>
+				<a title="View History" class="history-button">
+				  <img
+				  src="{% static 'images/history.svg' %}"
+				  alt="clock with an anticlockwise rewind arrow"
+				  class="history-button-image"
+				  id="baseline"
+				  />
+				</a>
+			  </header>
+			  <div class="donut-container">
+				<canvas id="baseline-donut"></canvas>
+				<h3 id="forcast_percent" style="font-weight: 500; font-size: 22px;">0%<br>Used</h3>
+			  </div>
+			  <div class="card-bottom-text">
+				<p>Baseline Forecast: <span id="forcast_value">0</span> kWh</p>
+				<p>So far (<span id="days_gone">0</span>days): <span id="forcast_used">0</span>kWh</p>
+				<aside >Savings in bound of <span id="savings">0</span> kWh</aside>
+			  </div>
+			</div>
+
+			<div id="felf-card" class="card felf-card">
+				<header class="card-header">
+				  <h2 class="card-title">FELF </h2>
+				  <!-- <a title="View History" class="history-button">
+					<img
+					src="{% static 'images/history.svg' %}"
+					alt="clock with an anticlockwise rewind arrow"
+					class="history-button-image"
+					/>
+				  </a> -->
+				</header>
+				<div class="donut-container">
+				  <canvas id="felf-donut"></canvas>
+				  <h3> <b style="font-weight: 800; font-size: 31px;" id="felf">0.0</b> </h3>
+				</div>
+				<div class="card-bottom-text">
+				  <p id="avg_load">Avg load : 0  kW</p>
+				  <p id="peak_load">Peak load : 0 kW</p>
+				  <aside id="felf_remark">Not so efficient - (Higher Is Better)</aside>
+				</div>
+			  </div>
+
+			  <div id="capacity-card" class="card capacity-card">
+				<header class="card-header">
+				  <h2 class="card-title">Capacity Factor</h3>
+				  <!-- <a title="View History" class="history-button">
+					<img
+					src="{% static 'images/history.svg' %}"
+					alt="clock with an anticlockwise rewind arrow"
+					class="history-button-image"
+					/>
+				  </a> -->
+				</header>
+				<div class="card-body capacity-card-body">
+				  <div class="card-body-top">
+					<div class="capacity-donut-container">
+					 <canvas id="capacity-donut1"></canvas>
+					</div>
+					<div class="capacity-body-text capacity-body-text1">
+					  <p class="gen1_size">0KVA</p>
+					  <p><span id="load_factor1">0</span>% Load</p>
+					  <p id="remark1">Good</p>
+					</div>
+					
+				  </div>
+				  <div class="card-body-bottom">
+					<div class="capacity-donut-container">
+					 <canvas id="capacity-donut2"></canvas>
+					</div>
+					<div class="capacity-body-text capacity-body-text2">
+					  <p class="gen2_size">0KVA</p>
+					  <p><span id="load_factor2">0</span>% Load</p>
+					  <p id="remark2">Fair</p>
+					</div>
+					
+				  </div>
+				</div>
+		
+				<div class="card-bottom-text capacity-card-bottom-text">
+				  <aside class="capacity-aside">Utilization factor for facility Gens</aside>
+				</div>
+			  </div>
+
+			  <div id="fuel-card" title="View History" class="card capacity-card">
+				<header class="card-header">
+				  <h2 class="card-title">Fuel Consumption</h3>
+				  <a title="View History" class="history-button">
+					<img
+					src="{% static 'images/history.svg' %}"
+					alt="clock with an anticlockwise rewind arrow"
+					class="history-button-image"
+					id="fuel"
+					/>
+				  </a>
+				</header>
+				<div class="card-body capacity-card-body">
+				  <div class="card-body-top">
+					<div class="capacity-donut-container">
+					 <canvas id="fuel-donut1"></canvas>
+					</div>
+					<div class="capacity-body-text capacity-body-text1">
+					  <p class="gen1_size">0KVA</p>
+					  <p><span id="fuel1">0</span> Ltrs</p>
+					  <p><span id="hours1">0</span> Hrs</p>
+					</div>
+					
+				  </div>
+				  <div class="card-body-bottom">
+					<div class="capacity-donut-container">
+					 <canvas id="fuel-donut2"></canvas>
+					</div>
+					<div class="capacity-body-text capacity-body-text2">
+					  <p class="gen2_size">0KVA</p>
+					  <p><span id="fuel2">0</span> Ltrs</p>
+					  <p><span id="hours2">0</span> Hrs</p>
+					</div>
+					
+				  </div>
+				</div>
+		
+				<div class="card-bottom-text capacity-card-bottom-text">
+				  <aside class="capacity-aside">Estimated fuel consumption for facility Gens</aside>
+				</div>
+			  </div>
+
+
+			<div id="emissions-card" class="card">
+				<header class="card-header">
+				  <h2 class="card-title">Carbon Emissions</h2>
+				  <a title="View History" class="history-button">
+					<img
+					src="{% static 'images/history.svg' %}"
+					alt="clock with an anticlockwise rewind arrow"
+					class="history-button-image"
+					id="carbon"
+					/>
+				  </a>
+				</header>
+				<div class="donut-container">
+				  <canvas id="carbon-donut"></canvas>
+				  <h3 id="total_emmisions" style="font-weight: 500; font-size: 22px;">0%<br>Tons</h3>
+				</div>
+				<div class="card-bottom-text">
+				  <p>Grid Supply    : <span id="emissions-grid">0</span> M-tons</p>
+				  <p>Generators : <span id="emissions-gens">0</span> M-tons</p>
+				  <aside id="emissions-savings"> 0 tons saved this month. <br>   
+					  (Eqivalent to 0 large Iroko trees)</aside>
+				</div>
+			  </div>
+	  
+			
+	  
+		</div>
+	  
+		  
+		<div class="history-modal-container" id="table_container">
+			<!-- <table class="modal-table">
+				<tr class="title-row">
+				  <th colspan="4">Data History</th>
+				</tr>
+				<tr class="heading-row">
+				  <th>Month</th>
+				  <th>Baseline Energy</th>
+				  <th>Used Energy</th>
+				  <th>Change</th>
+				</tr>
+				<tr class="data-row1">
+				  <td>Nov 2019</td>
+				  <td>31 kWh</td>
+				  <td>31 kWh</td>
+				  <td> <img class="arrowUp" src="{% static 'images/arrowUp.svg' %}" alt="arrow pointing up"> </td>
+				</tr>
+				<tr class="data-row2">
+				  <td>Oct 2019</td>
+				  <td>29 kWh</td>
+				  <td>29 kWh</td>
+				  <td> <img class="arrowDown" src="{% static 'images/arrowDown.svg' %}" alt="arrow pointing down"> </td>
+				</tr>
+				<tr class="data-row3">
+				  <td>Sep 2019</td>
+				  <td>30 kWh</td>
+				  <td>30 kWh</td>
+				  <td> <img class="arrowUp" src="{% static 'images/arrowUp.svg' %}" alt="arrow pointing up"> </td>
+				</tr>
+				<tr class="data-row4">
+				  <td>Aug 2019</td>
+				  <td>24 kWh</td>
+				  <td>24 kWh</td>
+				  <td> <img class="arrowDown" src="{% static 'images/arrowDown.svg' %}" alt="arrow pointing down"> </td>
+				</tr>
+				<tr class="data-row5">
+				  <td>July 2019</td>
+				  <td>36 kWh</td>
+				  <td>36 kWh</td>
+				  <td class="unicode-dash"> &#9473 </td>
+				</tr>
+			</table> -->
+		</div>
+				 <!-- End of Grid -->
+			<!-- End of Grid -->
+		{% endblock %}

@@ -1,0 +1,1070 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="grid grid--margin mb0">
+  <div class="grid__row">
+<div id="lastReadWrp">
+
+  <div id="ContentPlaceHolder1_ctl00">
+    <div id="topTitCustomer">
+      <div id="left">
+      </div>
+      <div id="middle">
+        <div id="titWrp">
+          
+<span class="update_time">Reading captured at : <span id="update_time" class="update_time" >Fetching...</span></span>
+
+        </div>
+
+      </div>
+      <div id="right">
+      </div>
+    </div>
+    <div id="ContentPlaceHolder1_pnlContWrp">
+      <div class="blockWrp">
+      <div id="contWrp">
+        <div id="ContentPlaceHolder1_singleDevicePnl">
+
+          <div id="singleDeviceWrp">
+
+            <div class="blockWrp">
+              <div class="topTitWrp">
+                <div class="tit">
+                  Phase Basic Measurements
+                </div>
+                <div class="hislinkWrp">
+                  <span onclick="">
+                    History
+                  </span>
+                </div>
+              </div>
+              <div class="tblContWrp">
+                <table cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <tr>
+
+                      <td class="tblTitBk0">
+                        Phase
+                      </td>
+
+                      <td class="tblTitBk1">
+                        L1
+                      </td>
+
+                      <td class="tblTitBk1">
+                        L2
+                      </td>
+
+                      <td class="tblTitBk1">
+                        L3
+                      </td>
+
+                      <td class="tblTitBk1">
+                        Unit
+                      </td>
+
+                    </tr>
+
+
+                    <tr class="vCL1">
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="1" tab="1">
+                        Voltage LN (Primary)
+                      </td>
+
+                      <td class="tdInfoBdr">
+
+                        <span id="vl1" param="4352">0</span>
+
+                      </td>
+
+                      <td class="tdInfoBdr">
+
+                        <span id="vl2" param="4353">0</span>
+
+                      </td>
+
+                      <td  class="tdInfoBdr">
+
+                        <span id="vl3" param="4354">0</span>
+
+                      </td>
+
+                      <td class="tdInfoBdr">
+                        V
+
+                      </td>
+
+                    </tr>
+
+
+
+
+                    <tr class="aCL1 isA">
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="2" tab="1">
+                        Current (Primary)
+                      </td>
+
+                      <td class="tdInfoBdr">
+
+                        <span id="amp_l1" param="4355">0 </span>
+
+
+                      </td>
+
+                      <td class="tdInfoBdr">
+
+                        <span id="amp_l2" param="4356">0 </span>
+
+
+                      </td>
+
+                      <td class="tdInfoBdr">
+
+                        <span id="amp_l3" param="4357">0 </span>
+
+
+                      </td>
+
+                      <td class="tdInfoBdr">
+                        A
+
+                      </td>
+
+                    </tr>
+
+                    <tr class="isKW">
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="5" tab="1">
+                        Active Power
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="active_kw_l1" param="4358">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="active_kw_l2" param="4359">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="active_kw_l3" param="4360">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kW
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="6" tab="1">
+                        Reactive Power
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="active_kvar_l1" param="4361">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="active_kvar_l2" param="4362">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="active_kvar_l3" param="4363">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kvar
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="7" tab="1">
+                        Apparent Power
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span  id="active_kv_l1" param="268">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span  id="active_kv_l2" param="269">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span  id="active_kv_l3" param="270">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kVA
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="8" tab="1">
+                        PF
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="pf_l1" param="4367">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="pf_l2" param="4368">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="pf_l3" param="4369">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        PF
+
+                      </td>
+
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="blockWrp">
+              <div class="topTitWrp">
+                <div class="tit">
+                  Total
+                </div>
+                <div class="hislinkWrp">
+                  <span >
+                    History
+                  </span>
+                </div>
+              </div>
+              <div class="tblContWrp">
+                <table cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <tr>
+
+                      <td class="tblTitBk0">
+                        Name
+                      </td>
+
+                      <td class="tblTitBk1">
+                        Value
+                      </td>
+
+                      <td class="tblTitBk1">
+                        Unit
+                      </td>
+
+                    </tr>
+
+                    <tr class="isKW">
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="3" tab="3">
+                        Active Power
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="kw_tot" param="5120">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kW
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="3" tab="3">
+                        Reactive Power
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="kvar_tot" param="5121">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kvar
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="3" tab="3">
+                        Apparent Power
+                      </td>
+
+
+                      <td id="kva_tot" class="tdInfoBdr">
+
+                        <span param="277">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kVA
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="3" tab="3">
+                        PF
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="pf_tot" param="5123">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        PF
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Frequency
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="frequency" param="279">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        Hz
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr class="aCL2 hide">
+
+                      <td class="tblInfoBk0 tdInfoBdr">
+                        Neutral Current (Secondary)
+                      </td>
+
+                      <td  class="tdInfoBdr">
+                        0
+
+                      </td>
+
+                      <td class="tdInfoBdr">
+                        A
+
+                      </td>
+
+                    </tr>
+                    <tr class="aCL1 isA">
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Neutral Current (Primary)
+                      </td>
+
+                      <td class="tdInfoBdr">
+
+                        <span id="neutral_current" param="5377">0 </span>
+
+
+                      </td>
+
+                      <td class="tdInfoBdr">
+                        A
+
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="blockWrp">
+              <div class="topTitWrp">
+                <div class="tit">
+                  Harmonic Distortion
+                </div>
+                <div class="hislinkWrp">
+                  <span >
+                    History
+                  </span>
+                </div>
+              </div>
+              <div class="tblContWrp">
+                <table cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <tr>
+
+                      <td class="tblTitBk0">
+                        Phase
+                      </td>
+
+                      <td class="tblTitBk1">
+                        L1
+                      </td>
+
+                      <td class="tblTitBk1">
+                        L2
+                      </td>
+
+                      <td class="tblTitBk1">
+                        L3
+                      </td>
+
+                      <td class="tblTitBk1">
+                        Unit
+                      </td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="4" tab="2">
+                        Voltage THD LN
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="voltage_thd_l1" param="4370">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="voltage_thd_l2" param="4371">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="voltage_thd_l3" param="4372">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        %
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="9" tab="2">
+                        Current THD
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="current_thd_l1" param="4373">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="current_thd_l2" param="4374">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="current_thd_l3"  param="4375">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        %
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="10" tab="2">
+                        Current TDD
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="current_tdd_l1" param="4379">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="current_tdd_l2" param="4380">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="current_tdd_l3" param="4381">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        %
+
+                      </td>
+
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="blockWrp">
+              <div class="topTitWrp">
+                <div class="tit">
+                  Energy
+                </div>
+                <div class="hislinkWrp">
+                  <span onclick="">
+                    History
+                  </span>
+                </div>
+              </div>
+              <div class="tblContWrp">
+                <table cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <tr>
+
+                      <td class="tblTitBk0">
+                        Name
+                      </td>
+
+                      <td class="tblTitBk1">
+                        Value
+                      </td>
+
+                      <td class="tblTitBk1">
+                        Unit
+                      </td>
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Active Energy
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="kwh_import" param="5888">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kWh
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Active Export Energy
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="kwh_export" param="5889">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kWh
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Reactive Energy
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="kvarh_import" param="5894">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kvarh
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Apparent Energy
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="kvah_total" param="5896">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kVAh
+
+                      </td>
+
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="blockWrp">
+              <div class="topTitWrp">
+                <div class="tit">
+                  Demands
+                </div>
+                <div class="hislinkWrp">
+                  <span onclick="">
+                    History
+                  </span>
+                </div>
+              </div>
+              <div class="tblContWrp">
+                <table cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <tr>
+
+                      <td class="tblTitBk0">
+                        Phase
+                      </td>
+
+                      <td class="tblTitBk1">
+                        L1
+                      </td>
+
+                      <td class="tblTitBk1">
+                        L2
+                      </td>
+
+                      <td class="tblTitBk1">
+                        L3
+                      </td>
+
+                      <td class="tblTitBk1">
+                        Unit
+                      </td>
+
+                    </tr>
+
+
+                    <tr class="aCL1 isA">
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="11" tab="1">
+                        Max Amp. Demand (Primary)
+                      </td>
+
+                      <td class="tdInfoBdr">
+
+                        <span id="max_amp_demand_l1" param="14083">0 </span>
+
+
+                      </td>
+
+                      <td class="tdInfoBdr">
+
+                        <span id="max_amp_demand_l2" param="14084">0 </span>
+
+
+                      </td>
+
+                      <td class="tdInfoBdr">
+
+                        <span id="max_amp_demand_l3" param="14085">0 </span>
+
+
+                      </td>
+
+                      <td class="tdInfoBdr">
+                        A
+
+                      </td>
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="blockWrp">
+              <div class="topTitWrp">
+                <div class="tit">
+                  Total Demands
+                </div>
+                <div class="hislinkWrp">
+                  <span >
+                    History
+                  </span>
+                </div>
+              </div>
+              <div class="tblContWrp">
+                <table cellpadding="0" cellspacing="0" width="100%">
+                  <tbody>
+                    <tr>
+
+                      <td class="tblTitBk0">
+                        Name
+                      </td>
+
+                      <td class="tblTitBk1">
+                        Value
+                      </td>
+
+                      <td class="tblTitBk1">
+                        Unit
+                      </td>
+
+                    </tr>
+
+                    <tr class="isKW">
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Max. Power Demand
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="max_sliding_window_kw_demand" param="280">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kW
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr class="isKW">
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Acc. Power Demand
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="accum_kw_demand" param="281">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kW
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Max. kVA Demand
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="max_sliding_window_kva_demand" param="282">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kVA
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr class="isKW">
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Power Demand
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="present_sliding_window_kw_demand" param="303">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kW
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        kVA Demand
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="present_sliding_window_kva_demand" param="304">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kVA
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        Accum. kVA Demand
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="accum_kva_demand" param="283">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        kVA
+
+                      </td>
+
+
+                    </tr>
+
+                    <tr>
+
+                      <td class="tblInfoBk0 tdInfoBdr" group="0" tab="3">
+                        PF (import) at maximum kVA sliding window Demand
+                      </td>
+
+
+                      <td class="tdInfoBdr">
+
+                        <span id="pf_import_at_maximum_kva_sliding_window_demand" param="5653">0</span>
+
+                      </td>
+
+
+
+                      <td class="tdInfoBdr">
+                        PF
+
+                      </td>
+
+
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="setHeigth">
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+</html>
+
+
+<!-- CORRESPONDING JAVASCRIPT FOR PAGE'S CHARTS -->
+<script src="{% static 'js/Chart.min.js' %}"></script>
+<script src="{% static 'js/chartjs-plugin-style.min.js' %}"></script>
+<script src="{% static 'js/charts-power-charts.js' %}"></script>
+
+
+{% endblock %}

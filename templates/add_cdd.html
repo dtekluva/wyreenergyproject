@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+		{% block content %}
+
+		
+		<div class="grid grid--margin bg-white">	
+			<div class="grid__row">
+				<div class="grid__col grid__col--padding">
+					<h3 class="grid__col-title">ADD CDD FOR A NEW MONTH</h3>
+			
+				</div>		
+			</div>	
+			<form>
+			<div class="grid__row grid__row--margin">
+				
+				<div class="grid__col grid__col--13 grid__col--margin">
+					<div class="form-upload" id="dropzone">
+						<!-- Dropzone not clickable here because javascript has been turned off for it (bottom of page) -->
+						<div class="form-upload__message dz-message needsclick">CLICK HERE TO SELECT AND UPLOAD CDD FILE (.CSV FILES ONLY) <br><br> MAKE SURE CDD FILE CONTAINS DATE AND CDD VALUE IN DAILY FREQUENCY.<br><br> AND DATE FORMAT IS IN (DD-MM-YYYY) I.E 31-12-2020.</div>
+						
+						<!-- Image Displayed Here -->
+						<img class="form-upload__message dz-message needsclick">
+					</div>
+				</div>
+				<input accept=".csv" hidden id="image" type="file" src="" alt="">
+				
+				
+				
+				      
+			</div>
+			
+			
+			</form>
+			
+
+		</div> <!-- End of Grid -->
+
+
+		{% endblock %}

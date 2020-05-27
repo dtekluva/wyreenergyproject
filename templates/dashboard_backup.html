@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+{% load static %}
+
+		{% block content %}
+
+	
+			<div class="grid grid--margin mb0">
+				<div class="grid__row">
+					<div class="grid__col grid__col--12 grid__col--margin grid__col--padding bg-white gradient-blue">
+							<div class="d-flex align-c">
+								<div class="info-nr info-nr--strong color-white"  >Total Energy <span id="total_kw">{{energy_used}} kwh</span> </div>
+								<div class="info-details color-white">
+									<p>(USAGE MONTH)</p>
+								</div>
+							</div>
+						</div>
+						<!-- <div class="grid__col grid__col--12 grid__col--margin grid__col--padding bg-white gradient-pop">
+							<div class="grid__row justify-sb">
+								<div class="grid__col grid__col--mb-12">
+									<h3 class="grid__col-title">Peak Power</h3>
+									<span class="grid__col-subtitle">LAST MONTH</span>
+								</div>
+							</div>
+							<div class="d-flex align-c">
+								<div class="info-nr info-nr--strong gradient-pink gradient-text">48</div>
+								<div class="info-details">
+								<p>kwh</p>
+								</div>
+							</div>
+						</div> -->
+						<div class="grid__col grid__col--12 grid__col--margin grid__col--padding bg-white gradient-pop" id="dash-second" style="
+														display: flex;
+													">
+							<div class="grid__row justify-sb" style="
+														flex: 2;
+													">
+								<div class="grid__col grid__col--mb-12" style="
+														text-align: center;
+													">
+									<h3 class="grid__col-title">Peak Demand</h3>
+									<span class="grid__col-subtitle">THIS MONTH</span>
+									<div class="info-nr info-nr--strong blue_text" id="peak_kw">{{peak_kw}}</div>
+									<div class="info-details">
+										<p style="
+														text-align: center;
+													">kw</p>
+									</div>
+								</div>
+							</div>
+							<div class="grid__col grid__col--mb-12" style="
+														text-align: center;
+													">
+								<h3 class="grid__col-title">Min. Demand</h3>
+								<span class="grid__col-subtitle">THIS MONTH</span>
+								<div class="info-nr info-nr--strong blue_text" id="min_kw">{{min_kw}}</div>
+								<div class="info-details">
+									<p style="
+														text-align: center;
+													">kw</p>
+								</div>
+							</div>
+							<div class="grid__col grid__col--mb-12" style="
+														text-align: center;
+													">
+								<h3 class="grid__col-title">Avg. Demand</h3>
+								<span class="grid__col-subtitle">THIS MONTH</span>
+								<div class="info-nr info-nr--strong blue_text" id="avg_kw">{{avg_kw}}</div>
+								<div class="info-details">
+									<p style="
+														text-align: center;
+													">kw</p>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+			<!-- End of Grid -->
+
+			<div class="grid grid--margin mb0">
+				<div class="grid__row">
+					<div class="grid__col grid__col--12 grid__col--margin grid__col--padding bg-white mb0">
+						<canvas id="ActivityChart" width="100%" height="40"></canvas>
+					</div>
+					<div class="grid__col grid__col--12 grid__col--margin grid__col--padding bg-white mb0">
+						<canvas id="DiseasesChart" width="100%" height="40"></canvas>
+					</div>
+				</div>
+				<!-- <div class="grid__col  grid__col--padding bg-white mt20">
+					<div class="table table--18">
+						<div class="table__header">
+							<div class="table__row">
+								<div class="table__cell"></div>
+								<div class="table__cell">TIME</div>
+								<div class="table__cell">L1-VOLT</div>
+								<div class="table__cell">L2-VOLT</div>
+								<div class="table__cell">L3-VOLT</div>
+								<div class="table__cell">L1-CURRENT</div>
+								<div class="table__cell">L2-CURENT</div>
+								<div class="table__cell">L3-CURENT</div>
+								<div class="table__cell">RUNNING ON</div>
+								<div class="table__cell"></div>
+							</div>
+						</div>
+						<div class="table__body">
+							<div class="table__row">
+								<div class="table__cell"><div class="avatar-thumb"></div></div>
+								<div class="table__cell">13-05-2019 12pm</div>
+								<div class="table__cell">240V</div>
+								<div class="table__cell">230V</div>
+								<div class="table__cell">220V</div>
+								<div class="table__cell">60A</div>
+								<div class="table__cell">60A</div>
+								<div class="table__cell">60A</div>
+								<div class="table__cell">GEN</div>
+								<div class="table__cell"></div>
+								
+								
+							</div>
+							<div class="table__row">
+									<div class="table__cell"><div class="avatar-thumb"></div></div>
+									<div class="table__cell">13-05-2019 12pm</div>
+									
+									<div class="table__cell">240V</div>
+									<div class="table__cell">230V</div>
+									<div class="table__cell">220V</div>
+									<div class="table__cell">60A</div>
+									<div class="table__cell">60A</div>
+									<div class="table__cell">60A</div>
+									<div class="table__cell">PHCN</div>
+									<div class="table__cell"></div>
+								</div>
+								
+								<div class="table__row">
+									<div class="table__cell"><div class="avatar-thumb"></div></div>
+									<div class="table__cell">13-05-2019 12pm</div>
+
+									<div class="table__cell">240V</div>
+									<div class="table__cell">230V</div>
+									<div class="table__cell">220V</div>
+									<div class="table__cell">60A</div>
+									<div class="table__cell">60A</div>
+									<div class="table__cell">60A</div>
+									<div class="table__cell">PHCN</div>
+									<div class="table__cell"></div>
+								</div>
+								<div class="table__row">
+								<div class="table__cell"></div>
+								<div class="table__cell"></div>
+								<div class="table__cell"></div>
+								<div class="table__cell"></div>
+								<div class="table__cell"></div>
+								<div class="table__cell"></div>
+								<div class="table__cell"></div>
+								
+								<div class="table__cell">
+									<span ></span>
+									<nav class="dropdown-menu dropdown-menu--content dropdown-menu--table" > 			
+										<ul>
+											<li><a href=""></a></li>
+											<li><a href="#"></a></li>
+											<li><a href="#"></a></li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+
+						</div>
+						
+					</div>
+				</div> -->
+				<!-- TABLE end -->
+			</div>
+			<!-- End of Grid -->
+			<!-- CORRESPONDING JAVASCRIPT FOR PAGE'S CHARTS -->
+			<script src="{% static 'js/Chart.min.js' %}"></script>
+			<script src="{% static 'js/chartjs-plugin-style.min.js' %}"></script>
+			<script src="{% static 'js/charts-custom-charts.js' %}"></script>
+		{% endblock %}

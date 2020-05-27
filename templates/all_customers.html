@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+		{% block content %}
+
+		<div class="grid grid--margin">
+			
+			<div class="grid__row">
+				<div class="grid__col grid__col--padding bg-white table-container">
+					<table>
+						<tr class="heading-row">
+						  <!-- <th class="close-container"></th> -->
+						  <th>NAME</th>
+						  <th>PHONE</th>
+						  <th>DEVICES</th>
+						  <th>ADDED</th>
+						  <th>ACTION-1</th>
+						  <th>ACTION-2</th>
+						</tr>
+						{% for customer in customers %}
+						<tr class="data-row">
+						  <td>{{customer.company_name}}</td>
+						  <td>{{customer.phone}}</td>
+						  <td>{{customer.get_device_count}}</td>
+						  <td>{{customer.added}}</td>
+						  <td><a href="../view_customer/{{customer.id}}"><button class="view-button">VIEW</button></a></td>
+						  <td><a href="../auth/login_as/{{customer.id}}"><button class="view-button">LOGIN AS</button></a></td>
+						  
+						</tr>
+						{% endfor %}
+					</table>
+					<!-- TABLE end -->
+				</div>
+
+			</div>
+			
+			<!-- <div class="grid__row">
+				<div class="grid__col grid__col--padding bg-white">
+					<ul class="pagination">
+						 <li><a href="#" class="pagination__current">1</a></li>
+						 <li><a href="#">2</a></li>
+						 <li><a href="#">3</a></li>
+						 <li><a href="#">4</a></li>
+						 <li><a href="#">5</a></li>
+						 <li><a href="#">NEXT</a></li>
+					</ul>
+				</div>
+			</div> -->
+
+		</div> <!-- End of Grid -->
+
+		{% endblock %}

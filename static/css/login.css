@@ -1,0 +1,12 @@
+.image__logo{
+        height: 85px;
+        width: 85px;
+}
+
+.modal__info {
+    padding-bottom: 0% !important;
+}
+
+.modal__overlay {
+    background-color: rgba(255, 255, 255, 0) !important;
+}

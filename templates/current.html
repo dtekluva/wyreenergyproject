@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+		{% block content %}
+
+        <div class="grid grid--margin">
+          <div class="grid__col grid__col--padding bg-white mb5">
+            <canvas id="ActivityChart" width="100%" height="40"></canvas>
+          </div>
+        </div>
+        <div class="grid grid--margin mb0">
+            
+            <div class="grid__col  grid__col--padding bg-white mt20">
+              <div class="table table--18">
+                <div class="table__header">
+                  <div class="table__row">
+                    <div class="table__cell"></div>
+                    <div class="table__cell">TIME</div>
+                    <div class="table__cell">L1-AMPS`</div>
+                    <div class="table__cell">L2-AMPS</div>
+                    <div class="table__cell">L3-AMPS</div>
+                    <div class="table__cell">Total AMPS</div>
+                    <div class="table__cell"></div>
+                  </div>
+                </div>
+                <div class="table__body">
+                  <div class="table__row">
+                    <div class="table__cell"><div class="avatar-thumb"></div></div>
+                    <div class="table__cell">13-05-2019 12pm</div>
+                    <div class="table__cell">240A</div>
+                    <div class="table__cell">230A</div>
+                    <div class="table__cell">220A</div>
+                    <div class="table__cell">60A</div>
+                    <div class="table__cell"></div>
+                    
+                  </div>
+                  <div class="table__row">
+                    <div class="table__cell"><div class="avatar-thumb"></div></div>
+                    <div class="table__cell">13-05-2019 12pm</div>
+                    <div class="table__cell">222A</div>
+                    <div class="table__cell">230A</div>
+                    <div class="table__cell">220A</div>
+                    <div class="table__cell">60A</div>
+                    <div class="table__cell"></div>
+                  </div>
+                    
+                  <div class="table__row">
+                    <div class="table__cell"><div class="avatar-thumb"></div></div>
+                    <div class="table__cell">13-05-2019 12pm</div>
+                    <div class="table__cell">240A</div>
+                    <div class="table__cell">230A</div>
+                    <div class="table__cell">220A</div>
+                    <div class="table__cell">60A</div>
+                    <div class="table__cell"></div>
+                  </div>
+
+                  <div class="table__row">
+                    <div class="table__cell"></div>
+                    <div class="table__cell"></div>
+                    <div class="table__cell"></div>
+                    <div class="table__cell"></div>
+                    <div class="table__cell"></div>
+                    <div class="table__cell"></div>
+                    <div class="table__cell"></div>
+                    
+                    <div class="table__cell">
+                      <span ></span>
+                      <nav class="dropdown-menu dropdown-menu--content dropdown-menu--table" > 			
+                        <ul>
+                          <li><a href=""></a></li>
+                          <li><a href="#"></a></li>
+                          <li><a href="#"></a></li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+    
+                </div>
+                
+              </div>
+              <!-- TABLE end -->
+            </div>
+          </div>
+
+        <!-- CORRESPONDING JAVASCRIPT FOR PAGE'S CHARTS -->
+        <script src="{% static 'js/Chart.min.js' %}"></script>
+        <script src="{% static 'js/chartjs-plugin-style.min.js' %}"></script>
+        <script src="{% static 'js/charts-current-charts.js' %}"></script>
+    {% endblock %}         

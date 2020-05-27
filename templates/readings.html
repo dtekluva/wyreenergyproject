@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+		{% block content %}
+    
+        <div class="grid grid--margin">
+          <div class="grid__col grid__col--padding bg-white mb5 readings_table">
+            <canvas id="ActivityChart" width="100%" height="40"></canvas>
+          </div>
+        </div>
+        
+        <!-- <li class="reports modal-toggle">
+							
+            <input type="text" name="dates" class="time_period form__input button" value="{{def_start_date}}-{{def_end_date}}" id = "time_period">
+            <div id = "default_range" hidden>{{def_start_date}}-{{def_end_date}}</div>
+          </li> -->
+        <div class="grid grid--margin mb0">
+          <div class="grid__col  grid__col--padding bg-white mt20">
+              <div class="table_heading" style="display:flex; width: 100% !important;">
+                
+                  <h2 style="flex:1">Raw Logs</h2>
+                  <li class="reports modal-toggle" style="flex:1;">
+                        
+                      <input style="width: 30% !important;" type="text" name="dates" class="time_period form__input button" value="" id = "read_time_period">
+                      <div id = "default_range" hidden>{{def_start_date}}-{{def_end_date}}</div>
+                      
+                  </li>
+              </div>
+              <!-- TABLE end -->
+              <table id="reaing_table" class="display">
+                  <thead>
+                      <tr>
+                          <th>Date/Time</th>
+                          <th>Line 1 (Volts)</th>
+                          <th>Line 2 (Volts)</th>
+                          <th>Line 3 (Volts)</th>
+                          <th>Line 1 (Amps)</th>
+                          <th>Line 2 (Amps)</th>
+                          <th>Line 3 (Amps)</th>
+                          <th>Line 1 (kWatts)</th>
+                          <th>Line 2 (kWatts)</th>
+                          <th>Line 3 (kWatts)</th>
+                          <th>Line 1 (kVAR)</th>
+                          <th>Line 2 (kVAR)</th>
+                          <th>Line 3 (kVAR)</th>
+                          <th>Line 1 (P.F)</th>
+                          <th>Line 2 (P.F)</th>
+                          <th>Line 3 (P.F)</th>
+                          <th>Frequency (AVG)</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      
+                  </tbody>
+              </table>
+            </div>
+          </div>
+
+        <!-- CORRESPONDING JAVASCRIPT FOR PAGE'S CHARTS -->
+        <script src="{% static 'js/Chart.min.js' %}"></script>
+        <script src="{% static 'js/chartjs-plugin-style.min.js' %}"></script>
+        <script src="{% static 'js/charts-readings-charts.js' %}"></script>
+    {% endblock %}         
